@@ -11,12 +11,12 @@
 
   <!-- SEO Meta Tags -->
   <meta name="description" content="Convert JPG and PNG images to PDF files easily and securely online. No login required.">
-  <meta name="keywords" content="image to pdf, jpg to pdf, png to pdf, sanox, convert online">
+  <meta name="keywords" content="image to pdf, jpg to pdf, png to pdf, sanox, convert images online, fast pdf creator">
   <meta name="author" content="Sanox">
 
-  <!-- Open Graph Tags -->
+  <!-- Open Graph Meta -->
   <meta property="og:title" content="Sanox - Image to PDF Tool" />
-  <meta property="og:description" content="Fast and free image to PDF converter tool." />
+  <meta property="og:description" content="Fast, free & secure tool to convert JPG and PNG images to PDF files online." />
   <meta property="og:image" content="og-image.png" />
   <meta property="og:url" content="https://imagetopdftools.netlify.app" />
   <meta property="og:type" content="website" />
@@ -24,11 +24,11 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Sanox - Image to PDF Converter" />
-  <meta name="twitter:description" content="Convert your images to PDF online for free." />
+  <meta name="twitter:description" content="Convert your images to PDF online for free using Sanox." />
   <meta name="twitter:image" content="og-image.png" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="icon" href="favicon.png" type="image/png" />
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
@@ -36,16 +36,16 @@
   <!-- PDF-lib CDN -->
   <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
 
-  <!-- Structured Data -->
+  <!-- Structured Data JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Sanox - Image to PDF Converter",
     "url": "https://imagetopdftools.netlify.app",
-    "description": "Free online tool to convert JPG and PNG images to PDF format. No login required.",
+    "description": "Free online tool to convert JPG and PNG images to PDF. No login needed.",
     "applicationCategory": "Utility",
-    "browserRequirements": "Requires JavaScript. Works on mobile & desktop browsers.",
+    "browserRequirements": "JavaScript",
     "operatingSystem": "All",
     "offers": {
       "@type": "Offer",
@@ -140,6 +140,15 @@
       font-weight: bold;
       text-decoration: none;
     }
+    .social-share {
+      margin: 1rem auto;
+    }
+    .social-share a {
+      display: inline-block;
+      margin: 0 10px;
+      text-decoration: none;
+      color: #0072f5;
+    }
     footer {
       margin-top: 3rem;
       padding: 1rem;
@@ -157,7 +166,7 @@
 <body>
   <header>
     <h1>Sanox - Image to PDF Converter</h1>
-    <p>Upload JPG or PNG images and convert to PDF easily.</p>
+    <p>Upload JPG or PNG images and convert them to PDF easily.</p>
   </header>
 
   <section class="upload-area" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)">
@@ -170,12 +179,18 @@
   <div class="donate-section">
     <h2>❤️ Support Us</h2>
     <a class="donate-link" href="https://coff.ee/sanox" target="_blank">☕ Buy Me a Coffee</a><br/>
-    <img src="upi-qr.png" alt="UPI QR Code for Sanox Donation" />
+    <img src="upi-qr.png" alt="UPI QR Code for Donation" />
     <p><strong>UPI ID:</strong> 9800392894-2@axl</p>
   </div>
 
+  <div class="social-share">
+    <p>🔗 Share this tool:</p>
+    <a href="https://twitter.com/intent/tweet?text=Convert+Images+to+PDF+Free+%7C+Sanox&url=https://imagetopdftools.netlify.app" target="_blank">Twitter</a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://imagetopdftools.netlify.app" target="_blank">Facebook</a>
+  </div>
+
   <footer>
-    <a href="#">Privacy Policy</a> |
+    <a href="#">Privacy Policy</a> | 
     <a href="#">Contact Us</a>
     <p>© 2025 Sanox Tools. All rights reserved.</p>
   </footer>
@@ -208,7 +223,7 @@
           const div = document.createElement("div");
           div.className = "preview";
           div.innerHTML = `
-            <img src="${e.target.result}" alt="Uploaded Image Preview" />
+            <img src="${e.target.result}" alt="Image Preview" />
             <button class="remove-btn" onclick="removeImage(${index})">×</button>
           `;
           previewContainer.appendChild(div);
