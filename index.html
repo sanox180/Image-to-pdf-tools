@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sanox - Free Image to PDF Converter</title>
 
+  <!-- Canonical & Robots -->
+  <link rel="canonical" href="https://imagetopdftools.netlify.app" />
+  <meta name="robots" content="index, follow" />
+
   <!-- SEO Meta Tags -->
   <meta name="description" content="Convert JPG and PNG images to PDF files easily and securely online. No login required.">
   <meta name="keywords" content="image to pdf, jpg to pdf, png to pdf, sanox, convert online">
@@ -17,6 +21,12 @@
   <meta property="og:url" content="https://imagetopdftools.netlify.app" />
   <meta property="og:type" content="website" />
 
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sanox - Image to PDF Converter" />
+  <meta name="twitter:description" content="Convert your images to PDF online for free." />
+  <meta name="twitter:image" content="og-image.png" />
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png" />
 
@@ -25,6 +35,25 @@
 
   <!-- PDF-lib CDN -->
   <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Sanox - Image to PDF Converter",
+    "url": "https://imagetopdftools.netlify.app",
+    "description": "Free online tool to convert JPG and PNG images to PDF format. No login required.",
+    "applicationCategory": "Utility",
+    "browserRequirements": "Requires JavaScript. Works on mobile & desktop browsers.",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
 
   <style>
     * { box-sizing: border-box; }
@@ -141,28 +170,18 @@
   <div class="donate-section">
     <h2>❤️ Support Us</h2>
     <a class="donate-link" href="https://coff.ee/sanox" target="_blank">☕ Buy Me a Coffee</a><br/>
-    <img src="upi-qr.png" alt="UPI QR Code" />
+    <img src="upi-qr.png" alt="UPI QR Code for Sanox Donation" />
     <p><strong>UPI ID:</strong> 9800392894-2@axl</p>
   </div>
 
   <footer>
-    <a href="#">Privacy Policy</a> | 
+    <a href="#">Privacy Policy</a> |
     <a href="#">Contact Us</a>
     <p>© 2025 Sanox Tools. All rights reserved.</p>
   </footer>
 
-  <!-- Google Analytics (Optional) -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-XXXXXXX-X');
-  </script> -->
-
   <script>
     let files = [];
-
     const input = document.getElementById("fileInput");
     const previewContainer = document.getElementById("previewContainer");
 
@@ -189,7 +208,7 @@
           const div = document.createElement("div");
           div.className = "preview";
           div.innerHTML = `
-            <img src="${e.target.result}" />
+            <img src="${e.target.result}" alt="Uploaded Image Preview" />
             <button class="remove-btn" onclick="removeImage(${index})">×</button>
           `;
           previewContainer.appendChild(div);
