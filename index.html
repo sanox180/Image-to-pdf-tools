@@ -62,7 +62,6 @@
     }
 
     .donate-section img {
-      height: 45px;
       border-radius: 8px;
     }
   </style>
@@ -78,11 +77,20 @@
   <!-- Donate Section -->
   <div class="donate-section">
     <p>❤️ Like this tool? Support me to keep it free!</p>
+
+    <!-- Coffee Button -->
     <a href="https://coff.ee/sanox" target="_blank">
       <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-           alt="Buy Me A Coffee">
+           alt="Buy Me A Coffee" height="45">
     </a>
-    <p style="margin-top: 10px;">🇮🇳 Prefer UPI? Send to: <strong style="color:#ff6600;">9800392894-2@axl</strong></p>
+
+    <p style="margin: 10px 0;">or scan UPI QR 👇</p>
+
+    <!-- UPI QR Code -->
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=9800392894-2@axl&pn=Sanox&cu=INR"
+         alt="UPI QR Code" width="180" />
+
+    <p style="margin-top: 10px;">UPI ID: <strong style="color:#ff6600;">9800392894-2@axl</strong></p>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
