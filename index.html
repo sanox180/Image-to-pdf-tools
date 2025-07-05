@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sanox - JPG to PDF Converter</title>
+  <title>Sanox - Free Image to PDF Converter</title>
 
-  <!-- SEO -->
-  <meta name="description" content="Convert your JPG and PNG images to PDF for free – fast, secure, and easy to use.">
-  <meta name="keywords" content="image to pdf, jpg to pdf, png to pdf, sanox tool, convert images">
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Convert JPG and PNG images to PDF files easily and securely online. No login required.">
+  <meta name="keywords" content="image to pdf, jpg to pdf, png to pdf, sanox, convert online">
   <meta name="author" content="Sanox">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Sanox - JPG to PDF Converter">
-  <meta property="og:description" content="Convert your images to PDF for free – fast, secure, and easy to use.">
-  <meta property="og:image" content="og-image.png">
-  <meta property="og:url" content="https://yourdomain.netlify.app">
-  <meta property="og:type" content="website">
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Sanox - Image to PDF Tool" />
+  <meta property="og:description" content="Fast and free image to PDF converter tool." />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:url" content="https://yourdomain.netlify.app" />
+  <meta property="og:type" content="website" />
 
   <!-- Favicon -->
-  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
@@ -41,9 +41,7 @@
       color: white;
       padding: 2rem 1rem;
     }
-    h1 { margin: 0; font-size: 2rem; }
-    p.tagline { margin-top: 0.5rem; font-size: 1rem; }
-
+    h1 { margin: 0; }
     .upload-area {
       border: 2px dashed #ccc;
       padding: 2rem;
@@ -52,7 +50,9 @@
       background: white;
       border-radius: 10px;
     }
-    input[type="file"] { display: none; }
+    input[type="file"] {
+      display: none;
+    }
     label {
       background: #0072f5;
       color: white;
@@ -96,26 +96,23 @@
       border-radius: 6px;
       cursor: pointer;
     }
-
     .donate-section {
-      margin-top: 3rem;
-    }
-    .donate-section h2 {
-      font-size: 1.2rem;
+      margin-top: 2rem;
     }
     .donate-section img {
-      height: 45px;
-      margin-top: 1rem;
-    }
-
-    .upi-section {
-      margin-top: 1rem;
-    }
-    .upi-section img {
-      height: 120px;
+      height: 140px;
       margin: 0.5rem;
     }
-
+    .donate-link {
+      display: inline-block;
+      background: #ffcc00;
+      color: black;
+      padding: 10px 20px;
+      margin: 1rem 0;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+    }
     footer {
       margin-top: 3rem;
       padding: 1rem;
@@ -123,17 +120,17 @@
       background: #eee;
     }
     footer a {
-      color: #0072f5;
-      margin: 0 8px;
       text-decoration: none;
+      color: #0072f5;
+      margin: 0 10px;
     }
   </style>
 </head>
 
 <body>
   <header>
-    <h1>Sanox - JPG to PDF Converter</h1>
-    <p class="tagline">Convert your images to PDF for free – fast, secure, and easy to use.</p>
+    <h1>Sanox - Image to PDF Converter</h1>
+    <p>Upload JPG or PNG images and convert to PDF easily.</p>
   </header>
 
   <section class="upload-area" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)">
@@ -146,17 +143,16 @@
   <div class="donate-section">
     <h2>Support Us ❤️</h2>
     <a href="https://coff.ee/sanox" target="_blank">
-      <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee">
+      <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee" />
     </a>
-    <div class="upi-section">
-      <img src="upi-qr.png" alt="UPI QR Code" />
-      <p>UPI ID: <strong>9800392894-2@axl</strong></p>
-    </div>
+    <br/>
+    <img src="upi-qr.png" alt="UPI QR Code" />
+    <p>UPI ID: <strong>9800392894-2@axl</strong></p>
   </div>
 
   <footer>
-    <a href="#">Privacy Policy</a> |
-    <a href="#">Contact Us</a><br>
+    <a href="#">Privacy Policy</a> | 
+    <a href="#">Contact Us</a><br/>
     <p>© 2025 Sanox. All rights reserved.</p>
   </footer>
 
