@@ -14,7 +14,7 @@
   <meta property="og:title" content="Sanox - Image to PDF Tool" />
   <meta property="og:description" content="Fast and free image to PDF converter tool." />
   <meta property="og:image" content="og-image.png" />
-  <meta property="og:url" content="https://yourdomain.netlify.app" />
+  <meta property="og:url" content="https://imagetopdftools.netlify.app" />
   <meta property="og:type" content="website" />
 
   <!-- Favicon -->
@@ -50,9 +50,7 @@
       background: white;
       border-radius: 10px;
     }
-    input[type="file"] {
-      display: none;
-    }
+    input[type="file"] { display: none; }
     label {
       background: #0072f5;
       color: white;
@@ -120,8 +118,8 @@
       background: #eee;
     }
     footer a {
-      text-decoration: none;
       color: #0072f5;
+      text-decoration: none;
       margin: 0 10px;
     }
   </style>
@@ -141,20 +139,26 @@
   </section>
 
   <div class="donate-section">
-    <h2>Support Us ❤️</h2>
-    <a href="https://coff.ee/sanox" target="_blank">
-      <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee" />
-    </a>
-    <br/>
+    <h2>❤️ Support Us</h2>
+    <a class="donate-link" href="https://coff.ee/sanox" target="_blank">☕ Buy Me a Coffee</a><br/>
     <img src="upi-qr.png" alt="UPI QR Code" />
-    <p>UPI ID: <strong>9800392894-2@axl</strong></p>
+    <p><strong>UPI ID:</strong> 9800392894-2@axl</p>
   </div>
 
   <footer>
     <a href="#">Privacy Policy</a> | 
-    <a href="#">Contact Us</a><br/>
-    <p>© 2025 Sanox. All rights reserved.</p>
+    <a href="#">Contact Us</a>
+    <p>© 2025 Sanox Tools. All rights reserved.</p>
   </footer>
+
+  <!-- Google Analytics (Optional) -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-XXXXXXX-X');
+  </script> -->
 
   <script>
     let files = [];
