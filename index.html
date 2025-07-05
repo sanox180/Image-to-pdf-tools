@@ -3,136 +3,154 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sanox - Image to PDF Converter</title>
+
+  <!-- ✅ SEO Meta Tags -->
+  <title>Sanox - Convert Image to PDF Free</title>
+  <meta name="description" content="Sanox is a free tool to convert images (JPG, PNG) to PDF in one click. Fast, secure and easy to use.">
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <!-- ✅ Open Graph Tags -->
+  <meta property="og:title" content="Sanox - Image to PDF Converter" />
+  <meta property="og:description" content="Convert images to PDF instantly with Sanox - Fast, simple and secure." />
+  <meta property="og:image" content="https://imagetopdftools.netlify.app/og-image.jpg" />
+  <meta property="og:url" content="https://imagetopdftools.netlify.app/" />
+  <meta name="twitter:card" content="summary_large_image">
+
   <style>
     body {
-      font-family: sans-serif;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
       background: #f9f9f9;
       color: #333;
-      padding: 20px;
       text-align: center;
     }
-
-    h1 {
-      color: #222;
-      margin-bottom: 20px;
+    header {
+      background: #007bff;
+      color: white;
+      padding: 1rem;
     }
-
-    #file-input {
-      margin: 10px 0;
+    main {
+      padding: 2rem;
     }
-
-    #preview {
-      margin-top: 10px;
+    #fileInput {
+      margin: 1rem 0;
+    }
+    .preview-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 10px;
+      margin-bottom: 1rem;
     }
-
-    #preview img {
-      max-width: 120px;
-      max-height: 120px;
-      border: 1px solid #ccc;
-      padding: 5px;
-      background: #fff;
+    .preview {
+      position: relative;
     }
-
-    button {
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: #fff;
-      font-size: 16px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 15px;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-
-    .donate-section {
-      margin-top: 40px;
-    }
-
-    .donate-section p {
-      font-size: 16px;
-    }
-
-    .donate-section img {
+    .preview img {
+      height: 100px;
       border-radius: 8px;
+    }
+    .remove-btn {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+    }
+    #convertBtn {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    footer {
+      margin-top: 3rem;
+      font-size: 14px;
+      color: #777;
+    }
+    .donate-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      background: #ffc107;
+      color: #000;
+      padding: 8px 16px;
+      text-decoration: none;
+      border-radius: 5px;
     }
   </style>
 </head>
 <body>
 
-  <h1>Sanox - Image to PDF Converter</h1>
+  <header>
+    <h1>Sanox - Image to PDF Converter</h1>
+    <p>Convert JPG or PNG images to PDF easily and securely</p>
+  </header>
 
-  <input type="file" id="file-input" multiple accept="image/*" />
-  <div id="preview"></div>
-  <button onclick="downloadPDF()">Convert to PDF</button>
+  <main>
+    <input type="file" id="fileInput" accept="image/*" multiple />
+    <div class="preview-container" id="previewContainer"></div>
+    <button id="convertBtn">Convert to PDF</button>
 
-  <!-- Donate Section -->
-  <div class="donate-section">
-    <p>❤️ Like this tool? Support me to keep it free!</p>
+    <br><br>
+    <a class="donate-btn" href="https://coff.ee/sanox" target="_blank">☕ Buy Me a Coffee</a>
+  </main>
 
-    <!-- Coffee Button -->
-    <a href="https://coff.ee/sanox" target="_blank">
-      <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-           alt="Buy Me A Coffee" height="45">
-    </a>
+  <footer>
+    <p>© 2025 Sanox Tools. All rights reserved.</p>
+  </footer>
 
-    <p style="margin: 10px 0;">or scan UPI QR 👇</p>
-
-    <!-- UPI QR Code -->
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=9800392894-2@axl&pn=Sanox&cu=INR"
-         alt="UPI QR Code" width="180" />
-
-    <p style="margin-top: 10px;">UPI ID: <strong style="color:#ff6600;">9800392894-2@axl</strong></p>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script>
-    const input = document.getElementById('file-input');
-    const preview = document.getElementById('preview');
+    const fileInput = document.getElementById('fileInput');
+    const previewContainer = document.getElementById('previewContainer');
+    const convertBtn = document.getElementById('convertBtn');
+    let files = [];
 
-    input.addEventListener('change', () => {
-      preview.innerHTML = '';
-      for (const file of input.files) {
-        const img = document.createElement('img');
-        img.src = URL.createObjectURL(file);
-        preview.appendChild(img);
-      }
+    fileInput.addEventListener('change', (e) => {
+      files = Array.from(e.target.files);
+      renderPreviews();
     });
 
-    async function downloadPDF() {
-      const { jsPDF } = window.jspdf;
-      const pdf = new jsPDF();
-
-      const files = input.files;
-      if (!files.length) {
-        alert("Please select image files first.");
-        return;
-      }
-
-      for (let i = 0; i < files.length; i++) {
-        const imgData = await toDataURL(files[i]);
-        if (i > 0) pdf.addPage();
-        pdf.addImage(imgData, 'JPEG', 10, 10, 190, 270);
-      }
-
-      pdf.save('converted.pdf');
-    }
-
-    function toDataURL(file) {
-      return new Promise((resolve) => {
+    function renderPreviews() {
+      previewContainer.innerHTML = '';
+      files.forEach((file, index) => {
         const reader = new FileReader();
-        reader.onload = e => resolve(e.target.result);
+        reader.onload = (e) => {
+          const div = document.createElement('div');
+          div.className = 'preview';
+          div.innerHTML = `
+            <img src="${e.target.result}" alt="image" />
+            <button class="remove-btn" onclick="removeFile(${index})">×</button>
+          `;
+          previewContainer.appendChild(div);
+        };
         reader.readAsDataURL(file);
       });
     }
+
+    function removeFile(index) {
+      files.splice(index, 1);
+      renderPreviews();
+    }
+
+    convertBtn.addEventListener('click', () => {
+      if (files.length === 0) {
+        alert("Please upload images first.");
+        return;
+      }
+      alert("PDF conversion in progress... (Add backend logic here)");
+      // Yaha future me backend logic add hoga
+    });
   </script>
+
 </body>
 </html>
