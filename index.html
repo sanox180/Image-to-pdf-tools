@@ -2,39 +2,129 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sanox - Image to PDF</title>
-  <link rel="stylesheet" href="style.css"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sanox - Image to PDF Converter</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #222;
+      margin-bottom: 20px;
+    }
+
+    #file-input {
+      margin: 10px 0;
+    }
+
+    #preview {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    #preview img {
+      max-width: 120px;
+      max-height: 120px;
+      border: 1px solid #ccc;
+      padding: 5px;
+      background: #fff;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .donate-section {
+      margin-top: 40px;
+    }
+
+    .donate-section p {
+      font-size: 16px;
+    }
+
+    .donate-section img {
+      height: 45px;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 <body>
+
   <h1>Sanox - Image to PDF Converter</h1>
+
   <input type="file" id="file-input" multiple accept="image/*" />
   <div id="preview"></div>
   <button onclick="downloadPDF()">Convert to PDF</button>
-  <p class="donate">Support: UPI - <strong>9800392894-2@axl</strong></p>
-  <script src="script.js"></script>
+
   <!-- Donate Section -->
-<p class="donate" style="margin-top: 20px; font-size: 16px;">
-  ❤️ Like this tool? Support me:
-</p>
+  <div class="donate-section">
+    <p>❤️ Like this tool? Support me to keep it free!</p>
+    <a href="https://coff.ee/sanox" target="_blank">
+      <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+           alt="Buy Me A Coffee">
+    </a>
+    <p style="margin-top: 10px;">🇮🇳 Prefer UPI? Send to: <strong style="color:#ff6600;">9800392894-2@axl</strong></p>
+  </div>
 
-<!-- UPI Support -->
-<p class="donate" style="margin-bottom: 10px;">
-  🇮🇳 UPI: <strong style="color: #ff6600;">9800392894-2@axl</strong>
-</p>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    const input = document.getElementById('file-input');
+    const preview = document.getElementById('preview');
 
-<!-- Buy Me a Coffee Button -->
-<a href="https://www.buymeacoffee.com/sanox180" target="_blank">
-  <img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" 
-       alt="Buy Me A Coffee" style="height: 40px;">
-</a>
-  <!-- Buy Me a Coffee Button -->
-<p style="margin-top: 20px; font-size: 16px;">❤️ Like this tool? Support me:</p>
+    input.addEventListener('change', () => {
+      preview.innerHTML = '';
+      for (const file of input.files) {
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
+        preview.appendChild(img);
+      }
+    });
 
-<a href="https://coff.ee/sanox" target="_blank">
-  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" 
-       alt="Buy Me A Coffee" height="45">
-</a>
+    async function downloadPDF() {
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF();
+
+      const files = input.files;
+      if (!files.length) {
+        alert("Please select image files first.");
+        return;
+      }
+
+      for (let i = 0; i < files.length; i++) {
+        const imgData = await toDataURL(files[i]);
+        if (i > 0) pdf.addPage();
+        pdf.addImage(imgData, 'JPEG', 10, 10, 190, 270);
+      }
+
+      pdf.save('converted.pdf');
+    }
+
+    function toDataURL(file) {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = e => resolve(e.target.result);
+        reader.readAsDataURL(file);
+      });
+    }
+  </script>
 </body>
 </html>
